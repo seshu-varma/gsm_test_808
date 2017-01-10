@@ -19,7 +19,7 @@
 void power_on();
 int8_t gsminit();
 int8_t gprsinit();
-int8_t send_http(int temperature, int humidity, int wind);
+int8_t send_http(float battery_volt, float pt1000_temp, float ds18b20_temp, float mpx_pressure, int soil_moisture_01, int soil_moisture_02, float bme280_temp, float bme280_pressure, float bme280_humidity);
 uint16_t readline(uint16_t timeout, uint8_t multiline);
 int8_t sendATcommand(const uint8_t* ATcommand, const uint8_t* expected_answer1, unsigned int timeout);
 int8_t sendATcommand2(const uint8_t* ATcommand, const uint8_t* expected_answer1, const uint8_t* expected_answer2, unsigned int timeout);

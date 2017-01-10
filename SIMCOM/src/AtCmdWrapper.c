@@ -8,7 +8,7 @@
  #include "delay.h"
  #include <string.h>
  uint8_t replybuffer[255];
- char aux_str[150];
+ char aux_str[350];
  char aux;
 
  char apn[]="airtelgprs.com";
@@ -16,7 +16,7 @@
  
  //uint16_t timeout = FONA_DEFAULT_TIMEOUT_MS;
  
- int8_t send_http(int temperature, int humidity, int wind){
+ int8_t send_http(float battery_volt, float pt1000_temp, float ds18b20_temp, float mpx_pressure, int soil_moisture_01, int soil_moisture_02, float bme280_temp, float bme280_pressure, float bme280_humidity){
 	uint8_t answer=0;
 
 	// Sets CID parameter
@@ -25,7 +25,7 @@
 		{
 			// Sets url
 			
-			snprintf(aux_str, sizeof(aux_str), "AT+HTTPPARA=\"URL\",\"io.adafruit.com/api/groups/weather/send.json?x-aio-key=ccd0562e0173494a8a91301fc6f3fa1e&temperature=%d&humidity=%d&wind=%d\"\r\n", temperature, humidity, wind);
+			snprintf(aux_str, sizeof(aux_str), "AT+HTTPPARA=\"URL\",\"io.adafruit.com/api/groups/atmelr21_sensors/send.json?x-aio-key=b34fcc99b8dc433a90de7cd175e4514d&battery_volt=%.2f&pt1000_temp=%.2f&ds18b20_temp=%.2f&mpx_pressure=%.2f&soil_moisture_01=%d&soil_moisture_02=%d&bme280_temp=%.2f&bme280_pressure=%.2f&bme280_humidity=%.2f\"\r\n", battery_volt, pt1000_temp, ds18b20_temp, mpx_pressure, soil_moisture_01, soil_moisture_02, bme280_temp, bme280_pressure,bme280_humidity);
 			answer = sendATcommand(aux_str, "OK", 5000);
 			if (answer == 1)
 			{
@@ -65,7 +65,6 @@
  }
  int8_t gsminit(){
 	printf("starting....\r\n");	
-	//usart_write_buffer_wait(&usart_instance_one, string, sizeof(string));
 	power_on();
 	uint8_t string[] = "ATE0\r\n";
 	sendATcommand("ATE0\r\n", "OK", 1000);
@@ -138,7 +137,7 @@
 				// check if the desired answer is in the response of the module
 				if (strstr(response, expected_answer1) != NULL)
 				{
-					printf("\n");
+					//printf("\n");
 					answer = 1;
 				}
 			}
@@ -183,13 +182,13 @@
 				// check if the desired answer is in the response of the module
 				if (strstr(response, expected_answer1) != NULL)
 				{
-					printf("\n");
+					//printf("\n");
 					answer = 1;
 				}
 				// check if the desired answer 2 is in the response of the module
 				if (strstr(response, expected_answer2) != NULL)
 				{
-					printf("\n");
+					//printf("\n");
 					answer = 2;
 				}
 			}
