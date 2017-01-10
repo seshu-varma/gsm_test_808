@@ -1,0 +1,14 @@
+cmd						reply						note
+---						-----						----
+AT\r\n						\r\nok\r\n
+AT+CREG?\r\n					\r\n+CREG: 0,1\r\n (or) \r\n+CREG: 0,5\r\n
+AT+SAPBR=3,1,"Contype","GPRS"\r\n		\r\nok\r\n
+AT+SAPBR=3,1,"APN","airtelgprs.com"\r\n		\r\nok\r\n					replace airtel with youres
+assuming u don't need to set network username and password
+
+AT+SAPBR=1,1\r\n				\r\nok\r\n
+AT+HTTPINIT\r\n					\r\nok\r\n
+AT+HTTPPARA="CID",1				\r\nok\r\n
+AT+HTTPPARA="URL","test.libelium.com/test-get-post.php?a=1&b=2"		\r\nok\r\n
+AT+HTTPACTION=0\r\n				\r\n+HTTPACTION:0,200\r\n			for get action for post you have to set it as 1
+AT+HTTPREAD=0,100				\r\ndata\r\n 

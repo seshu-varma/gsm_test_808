@@ -1,0 +1,11 @@
+AT+HTTPPARA="URL","test.libelium.com/test-get-post.php?temp=&moisture=&pressure=
+seshu
+------
+https://io.adafruit.com/api/groups/atmelr21_sensors/send.json?x-aio-key=ccd0562e0173494a8a91301fc6f3fa1e&ic_temp=33.2&battery_volt=3.4&pt1000_temp=40&18b20_temp=35&mpx_pressure=50&soil_moisture_01=30&soil_moisture_02=31&bme280_temp=33&bme280_pressure=55&bme280_humidity=44
+
+vishnu
+-------
+user:vishnu_b
+pass:office123
+https://io.adafruit.com/api/groups/atmelr21_sensors/send.json?x-aio-key=b34fcc99b8dc433a90de7cd175e4514d&battery_volt=3.3&pt1000_temp=50&ds18b20_temp=35&mpx_pressure=50&soil_moisture_01=30&soil_moisture_02=31&bme280_temp=33&bme280_pressure=55&bme280_humidity=44
+
